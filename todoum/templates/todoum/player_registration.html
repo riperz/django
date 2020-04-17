@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Registration</title>
+</head>
+<body>
+
+{{ errors }}
+
+<div>
+    <h2>Region</h2>
+    {{ region.name }}
+</div>
+
+<div>
+    <h2>Player info</h2>
+    <form action="{% url 'player-registration' region.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Create Player"
+               {% if errors %}disabled="disabled"{% endif %} />
+    </form>
+</div>
+
+</body>
+</html>
